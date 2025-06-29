@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
+import { StockDetails } from '../stock-details/stock-details';
 
 @Component({
   selector: 'app-stock-list',
-  imports: [CommonModule],
+  imports: [CommonModule, StockDetails],
   templateUrl: './stock-list.html',
   styleUrl: './stock-list.css'
 })

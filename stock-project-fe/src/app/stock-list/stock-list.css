@@ -1,67 +1,123 @@
-.list-container {
-  align-items:left;
-  display:left;
-  margin: 2rem auto;
-  max-width: 800px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.stock-view-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 0;
+  transition: all 0.3s ease;
 }
 
-table {
+.stock-view-container.has-details {
+  justify-content: flex-start;
+  padding-left: 5%;
+}
+
+.table-container {
+  width: 800px;
+  transition: all 0.3s ease;
+}
+
+.details-container {
+  width: 600px;
+  margin-left: 40px;
+  background: transparent;
+  padding: 0;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.3s ease;
+}
+
+.details-container.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-thead {
+.table thead {
   background: linear-gradient(135deg, lime, #b005ff);
   color: white;
   letter-spacing: 0.5px;
 }
 
-th {
+.table th {
   padding: 16px 24px;
   text-align: left;
   font-weight: 600;
 }
 
-th:first-child {
+.table th:first-child {
   border-top-left-radius: 8px;
 }
 
-th:last-child {
+.table th:last-child {
   border-top-right-radius: 8px;
 }
 
-tbody tr {
+.table tbody tr {
   transition: all 0.2s ease;
 }
 
-tbody tr:nth-child(even) {
+.table tbody tr:nth-child(even) {
   background-color: #f8f9fa;
 }
 
-tbody tr:nth-child(odd) {
+.table tbody tr:nth-child(odd) {
   background-color: #ffffff;
 }
 
-td {
+.table td {
   padding: 14px 24px;
   border-bottom: 1px solid #e0e0e0;
   color: #333;
 }
 
-tbody tr:hover {
+.table tbody tr:hover {
   background-color: #e9f5ff;
   transform: translateX(2px);
   cursor: pointer;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  th, td {
-    padding: 12px 16px;
+.table .ticker {
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.selected {
+  background-color: #e0f7fa !important;
+  font-weight: bold;
+}
+
+@media (max-width: 1400px) {
+  .details-container {
+    width: 500px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .stock-view-container.has-details {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+  }
+
+  .details-container {
+    width: 800px;
+    margin: 40px 0 0 0;
+  }
+}
+
+@media (max-width: 850px) {
+  .table-container,
+  .details-container {
+    width: 100%;
+    max-width: 800px;
   }
 }

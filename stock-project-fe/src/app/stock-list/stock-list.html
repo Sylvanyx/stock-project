@@ -1,20 +1,30 @@
-<div class="list-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Company Name</th>
-        <th>Ticker Symbol</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        *ngFor="let stock of stocks"
-        (click)="onStockSelect(stock)"
-        [class.selected]="selectedStock()?.ticker === stock.ticker">
-        <td>{{ stock.name }}</td>
-        <td class="ticker">{{ stock.ticker }}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="stock-view-container" [class.has-details]="selectedStock()">
 
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Company Name</th>
+          <th>Ticker Symbol</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stock of stocks"
+            (click)="onStockSelect(stock)"
+            [class.selected]="selectedStock()?.ticker === stock.ticker">
+          <td>{{ stock.name }}</td>
+          <td class="ticker">{{ stock.ticker }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  @if (selectedStock()) {
+    <div class="details-container visible">
+      <app-stock-details
+        [stock]="selectedStock()"
+        (closed)="selectedStock.set(null)">
+      </app-stock-details>
+    </div>
+  }
 </div>
